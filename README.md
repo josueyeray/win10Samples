@@ -12,3 +12,10 @@ Windows 10 samples for the article series "Windows 10 for developers" i am writi
    - Spanish article: http://bit.ly/1IIBeJa
       
    - English article: http://bit.ly/1D1wQBy
+
+3.- Win10RelativePanel & Win10SplitView
+
+   - Spanish article: http://bit.ly/1G62gYr
+   
+   - English article: Comming soon...
+   - 
