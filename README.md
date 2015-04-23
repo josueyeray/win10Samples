@@ -17,5 +17,5 @@ Windows 10 samples for the article series "Windows 10 for developers" i am writi
 
    - Spanish article: http://bit.ly/1G62gYr
    
-   - English article: Comming soon...
+   - English article: http://bit.ly/1d3wiFa
    - 
