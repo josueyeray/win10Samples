@@ -1,0 +1,39 @@
+﻿<base:ViewBase
+    x:Class="Win10InkCanvas.Views.MultipleSurfacesView"
+    xmlns:base="using:Win10InkCanvas.Views.Base"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10InkCanvas.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding MultipeSurfaceVM, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".17*"/>
+            <RowDefinition Height=".83*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".08*"/>
+            <ColumnDefinition Width=".92*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.ColumnSpan="2" Grid.RowSpan="2" Source="/Assets/background.jpg" Stretch="UniformToFill" Margin="0,24,0,0"/>
+
+        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,25,0,0"
+                Command="{Binding GoBackCommand}"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Start writting and painting!" Margin="12,20,0,0" FontSize="36" VerticalAlignment="Center"/>
+
+        <InkCanvas Grid.ColumnSpan="2" Grid.Row="1" x:Name="InkCanvasControl" Margin="25,0,25,25"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-40,0,0">
+            <Image x:Name="Pen" Source="/Assets/Pen.png" Height="100" VerticalAlignment="Top"
+                   Tapped="Pen_Tapped"/>
+            <Image x:Name="MarkerBlue" Source="/Assets/MarkerBlue.png" Height="100" VerticalAlignment="Top" Tapped="Blue_Tapped"/>
+            <Image x:Name="MarkerGreen" Source="/Assets/MarkerGreen.png" Height="100" VerticalAlignment="Top" Tapped="Green_Tapped"/>
+            <Image x:Name="MarkerPink" Source="/Assets/MarkerPink.png" Height="100" VerticalAlignment="Top" Tapped="Pink_Tapped"/>
+        </StackPanel>
+        
+    </Grid>
+</base:ViewBase>

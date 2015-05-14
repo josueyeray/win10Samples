@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="Win10InkCanvas.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10InkCanvas"
+    xmlns:locator="using:Win10InkCanvas.ViewModels.Base"
+    RequestedTheme="Light">
+    
+    <Application.Resources>
+        <locator:ViewModelLocator x:Key="Locator"/>
+    </Application.Resources>
+
+</Application>
