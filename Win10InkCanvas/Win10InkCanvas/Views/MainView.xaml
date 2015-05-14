@@ -10,11 +10,53 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="24,24,0,0"> 
-            <TextBlock Text="Natural writting &amp; ink" FontSize="36"/>
-            <Button Content="Basic ink" Width="200" Command="{Binding NavigateToBasicInkCommand}"/>
-            <Button Content="Multiple inks" Width="200" Command="{Binding NavigateToMultipleSurfacesCommand}" Margin="0,12,0,0"/>
-            <Button Content="Using MVVM" Width="200" Command="{Binding NavigateToMultipleSurfacesMVVMCommand}" Margin="0, 12, 0, 0"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="200"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Container.Margin"
+                                Value="12,12,12,0"/>
+                        <Setter Target="TitleText.FontSize" 
+                                Value="24"/>
+                        <Setter Target="TitleText.TextWrapping"
+                                Value="Wrap"/>
+                        <Setter Target="BasicButton.Width"
+                                Value="300"/>
+                        <Setter Target="MultipleButton.Width"
+                                Value="300"/>
+                        <Setter Target="MVVMButton.Width"
+                                Value="300"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Container.Margin"
+                                Value="24,24,24,0"/>
+                        <Setter Target="TitleText.FontSize" 
+                                Value="36"/>
+                        <Setter Target="TitleText.TextWrapping"
+                                Value="Wrap"/>
+                        <Setter Target="BasicButton.Width"
+                                Value="200"/>
+                        <Setter Target="MultipleButton.Width"
+                                Value="200"/>
+                        <Setter Target="MVVMButton.Width"
+                                Value="200"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel x:Name="Container" Margin="24,24,0,0">
+            <TextBlock x:Name="TitleText" Text="Natural writting &amp; ink" FontSize="36" />
+            <Button x:Name="BasicButton" Content="Basic ink" Width="200" Command="{Binding NavigateToBasicInkCommand}"/>
+            <Button x:Name="MultipleButton" Content="Multiple inks" Width="200" Command="{Binding NavigateToMultipleSurfacesCommand}" Margin="0,12,0,0"/>
+            <Button x:Name="MVVMButton" Content="Using MVVM" Width="200" Command="{Binding NavigateToMultipleSurfacesMVVMCommand}" Margin="0, 12, 0, 0"/>
         </StackPanel>
         <Image Source="/Assets/hand.png" Stretch="Uniform" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="450" Margin="0,0,-40,-40"/>
     </Grid>

@@ -15,6 +15,7 @@
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<BasicInkViewModel>();
             builder.RegisterType<MultipeSurfaceViewModel>();
+            builder.RegisterType<UsingMVVMViewModel>();
 
             this.container = builder.Build();
         }
@@ -41,6 +42,14 @@
         public MultipeSurfaceViewModel MultipeSurfaceVM
         {
             get { return this.container.Resolve<MultipeSurfaceViewModel>(); }
+        }
+
+        /// <summary>
+        /// Multiple surface using MVVM Viewmodel
+        /// </summary>
+        public UsingMVVMViewModel UsingMVVMVM
+        {
+            get { return this.container.Resolve<UsingMVVMViewModel>(); }
         }
     }
 }

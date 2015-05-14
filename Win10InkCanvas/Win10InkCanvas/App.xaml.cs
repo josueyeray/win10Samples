@@ -33,6 +33,23 @@
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+            {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            }
+        }
+
+        private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
+        {
+            if (RootFrame != null && RootFrame.CanGoBack)
+            {
+                RootFrame.GoBack();
+                e.Handled = true;
+                return;
+            }
+
+            e.Handled = false;
         }
 
         /// <summary>
