@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Win10Transform3D.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10Transform3D"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:media="using:Microsoft.Xaml.Interactions.Media"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    mc:Ignorable="d">
+
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="/Assets/intro.png" Width="450" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <TextBlock Text="3D XAML Transformations" FontSize="36" Margin="24,24"/>
+        <StackPanel x:Name="Container" Margin="24,80,0,0">
+            <Button Content="Manual translation" Width="200">
+                <i:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <core:NavigateToPageAction TargetPage="Win10Transform3D.Views.ManualTranslationView"/>
+                    </core:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </Button>
+            <Button Content="Animated translation" Width="200" Margin="0,12,0,0">
+                <i:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <core:NavigateToPageAction TargetPage="Win10Transform3D.Views.AnimatedTranslationView"/>
+                    </core:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Page>

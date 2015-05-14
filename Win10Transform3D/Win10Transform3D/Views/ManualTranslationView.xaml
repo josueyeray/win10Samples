@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Win10Transform3D.Views.ManualTranslationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10Transform3D.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Slider x:Name="Slide1" Minimum="0" Maximum="340" Value="0" HorizontalAlignment="Stretch" Margin="60,12" Orientation="Horizontal"/>
+
+            <Grid BorderBrush="DarkBlue" BorderThickness="4" CornerRadius="5" Background="LightBlue" Margin="60">
+                <Grid.Transform3D>
+                    <PerspectiveTransform3D x:Name="RootGridTransform" 
+                                    OffsetX="-150" 
+                                    OffsetY="100" Depth="400"/>
+                </Grid.Transform3D>
+                <Grid Width="100" Height="100" Background="Red" HorizontalAlignment="Left">
+                    <Grid.Transform3D>
+                        <CompositeTransform3D TranslateZ="-100" TranslateX="{Binding Value, ElementName=Slide1}"/>
+                    </Grid.Transform3D>
+                    <TextBlock Text="My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?"
+                               TextWrapping="Wrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
+                </Grid>
+
+                <Grid Width="100" Height="100" Background="Blue" HorizontalAlignment="Left">
+                    <Grid.Transform3D>
+                        <CompositeTransform3D TranslateZ="-50" TranslateX="{Binding Value, ElementName=Slide1}"/>
+                    </Grid.Transform3D>
+                    <TextBlock Text="The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers."
+                               TextWrapping="Wrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
+                </Grid>
+
+                <Grid Width="100" Height="100" Background="Orange" HorizontalAlignment="Left">
+                    <Grid.Transform3D>
+                        <CompositeTransform3D TranslateZ="0" TranslateX="{Binding Value, ElementName=Slide1}"/>
+                    </Grid.Transform3D>
+                    <TextBlock Text="Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."
+                               TextWrapping="Wrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

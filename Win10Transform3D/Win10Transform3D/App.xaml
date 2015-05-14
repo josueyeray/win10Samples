@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Win10Transform3D.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10Transform3D"
+    RequestedTheme="Light">
+
+</Application>
