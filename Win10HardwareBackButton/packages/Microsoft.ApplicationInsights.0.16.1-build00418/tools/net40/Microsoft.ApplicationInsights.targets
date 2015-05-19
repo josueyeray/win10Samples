@@ -1,21 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <!-- Used by the project to display user-friendly errors when the targets file is missing  -->
     <ApplicationInsightsImported>true</ApplicationInsightsImported>
   </PropertyGroup>
-  
-  <!--
-    Create Application Insights references for C++ projects, which NuGet does not support automatically.
-    We don't want to do this for other project types because references added through MSBuild files are not picked up by IntelliSense until the project is reloaded.
-  -->
-  <ItemGroup Condition="'$(ProjectExt)' == '.vcxproj'">
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>$(MSBuildThisFileDirectory)..\..\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.winmd</HintPath>
-      <IsWinMDFile>true</IsWinMDFile>
-    </Reference>
-  </ItemGroup>
   
   <Target Name="CreateApplicationInsightsConfigItemsForIncrementalBuild">
     <ItemGroup>
@@ -70,7 +59,14 @@
     </ItemGroup>
   </Target>
 
-  <UsingTask TaskName="EnableDeveloperMode" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
+  <PropertyGroup>
+    <!-- In Visual Studio 2012 and 2013 the Microsoft.Build.Tasks assembly includes version number in its name -->
+    <MSBuildTasksAssembly Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.v$(MSBuildToolsVersion).dll')">$(MSBuildToolsPath)\Microsoft.Build.Tasks.v$(MSBuildToolsVersion).dll</MSBuildTasksAssembly>
+    <!-- In Visual Studio 2015 the Microsoft.Build.Tasks assembly includes Core in its name -->
+    <MSBuildTasksAssembly Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll')">$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</MSBuildTasksAssembly>
+  </PropertyGroup>
+  
+  <UsingTask TaskName="EnableDeveloperMode" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildTasksAssembly)">
     <ParameterGroup>
       <ConfigurationFile ParameterType="System.String" Required="true" />
     </ParameterGroup>
@@ -88,8 +84,8 @@
             XElement telemetryChannel = document.Root.Element(elementName);
             if (telemetryChannel == null)
             {
-                telemetryChannel = new XElement(elementName);
-                document.Root.Add(telemetryChannel);
+                telemetryChannel = new XElement(elementName, new XAttribute("Type", "Microsoft.ApplicationInsights.Channel.InMemoryChannel, Microsoft.ApplicationInsights"));                
+                document.Root.Add(telemetryChannel);                
             }
 
             elementName = xmlns + "DeveloperMode";
