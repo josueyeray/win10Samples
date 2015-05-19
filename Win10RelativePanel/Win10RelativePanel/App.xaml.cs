@@ -36,6 +36,8 @@ namespace Win10RelativePanel
         /// </summary>
         public App()
         {
+            TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
