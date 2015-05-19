@@ -36,6 +36,8 @@ namespace Win10SplitView
         /// </summary>
         public App()
         {
+            TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
