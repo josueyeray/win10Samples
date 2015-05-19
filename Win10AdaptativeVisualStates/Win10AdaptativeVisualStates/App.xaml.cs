@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.ApplicationInsights;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
@@ -28,7 +17,7 @@ namespace Win10AdaptativeVisualStates
         /// <summary>
         /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
         /// </summary>
-        public TelemetryClient TelemetryClient = new TelemetryClient();
+        public static Microsoft.ApplicationInsights.TelemetryClient TelemetryClient;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -36,6 +25,8 @@ namespace Win10AdaptativeVisualStates
         /// </summary>
         public App()
         {
+
+            TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
